@@ -27,4 +27,4 @@ replay_pid*
 # Other files
 .classpath
 .project
-/.settings/
+*/.settings/
