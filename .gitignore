@@ -23,9 +23,3 @@
 hs_err_pid*
 replay_pid*
 /.metadata/
-
-# Other files
-.classpath
-.project
-*/.settings/
-/target/
