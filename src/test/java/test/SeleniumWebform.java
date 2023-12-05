@@ -9,19 +9,21 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import locators.LocatorWebform;
 import locators.LocatorWebformTarget;
+import utils.CommonMethods;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SeleniumWebform {
 
 	private static WebDriver driver = null;
+
 	private LocatorWebform lwf = new LocatorWebform();
 	private LocatorWebformTarget lwft = new LocatorWebformTarget();
+	private CommonMethods cm = new CommonMethods();
 
 	@BeforeClass
 	public static void setUpClass() {
@@ -45,57 +47,50 @@ public class SeleniumWebform {
 
 	@Test
 	public void seleniumWebformPageIsAccessibleWithSuccess() {
-		String webTitle = driver.getTitle();
-		Assert.assertEquals("Web form", webTitle);
+		String actualMessage = cm.getPageTitle(driver);
+		String expectedMessage = "Web form";
+
+		Assert.assertEquals(expectedMessage, actualMessage);
 	}
 
 	@Test
 	public void submitSeleniumWebformPageWithSuccess() {
-		driver.findElement(lwf.fieldId).click();
-		driver.findElement(lwf.fieldId).clear();
-		driver.findElement(lwf.fieldId).sendKeys("Testing a text field");
+		cm.writeText(driver, lwf.fieldId, "Testing a text field");
+		cm.writeText(driver, lwf.fieldPassword, "passwordField");
+		cm.writeText(driver, lwf.fieldTextarea, "Testing a text area field");
 
-		driver.findElement(lwf.fieldPassword).click();
-		driver.findElement(lwf.fieldPassword).clear();
-		driver.findElement(lwf.fieldPassword).sendKeys("passwordField");
+		cm.click(driver, lwf.fieldSelect);
+		cm.click(driver, lwf.selectNumberTwo);
 
-		driver.findElement(lwf.fieldTextarea).click();
-		driver.findElement(lwf.fieldTextarea).clear();
-		driver.findElement(lwf.fieldTextarea).sendKeys("Testing a text area field");
+		cm.click(driver, lwf.checkBoxOne);
+		cm.click(driver, lwf.checkBoxTwo);
+		cm.click(driver, lwf.radioButtonTwo);
 
-		driver.findElement(lwf.fieldSelect).click();
-		driver.findElement(lwf.selectNumberTwo).click();
+		cm.writeText(driver, lwf.fieldDate, "08/21/1988");
+		cm.click(driver, lwf.datePickerSelectActiveDay);
 
-		driver.findElement(lwf.checkBoxOne).click();
-		driver.findElement(lwf.checkBoxTwo).click();
-		driver.findElement(lwf.radioButtonTwo).click();
-		
-		driver.findElement(lwf.fieldDate).click();
-		driver.findElement(lwf.fieldDate).clear();
-		driver.findElement(lwf.fieldDate).sendKeys("08/21/1988");
-		driver.findElement(lwf.datePickerSelectActiveDay).click();
+		cm.click(driver, lwf.buttonSubmit);
 
-		driver.findElement(lwf.buttonSubmit).click();
+		String actualMessage = cm.getText(driver, lwft.fieldMessage);
+		String expectedMessage = "Received!";
 
-		String submitMessage = driver.findElement(lwft.fieldMessage).getText();
-
-		Assert.assertEquals("Received!", submitMessage);
+		Assert.assertEquals(expectedMessage, actualMessage);
 	}
 
 	@Test
 	public void validateIfDisableInputIsDisabled() {
-		Assert.assertFalse(driver.findElement(By.name("my-disabled")).isEnabled());
+		Assert.assertFalse(cm.getElementIsEnabled(driver, lwf.fieldDisabled));
 	}
 
 	@Test
 	public void validateIfReadonlyInputCanNotBeEditable() {
-		String expectedValueReadonlyInputField = driver.findElement(By.name("my-readonly")).getText();
+		String expectedText = cm.getText(driver, lwf.fieldReadyOnly);
 
-		driver.findElement(By.name("my-readonly")).sendKeys("new text");
+		cm.writeText(driver, lwf.fieldReadyOnly, "new text");
 
-		String currentValueReadonlyInputField = driver.findElement(By.name("my-readonly")).getText();
+		String actualText = cm.getText(driver, lwf.fieldReadyOnly);
 
-		Assert.assertNotEquals("new text", currentValueReadonlyInputField);
-		Assert.assertEquals(expectedValueReadonlyInputField, currentValueReadonlyInputField);
+		Assert.assertNotEquals("new text", actualText);
+		Assert.assertEquals(expectedText, actualText);
 	}
 }

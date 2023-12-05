@@ -10,10 +10,12 @@ public class LocatorWebform {
 	public By checkBoxTwo = By.id("my-check-2");
 	
 	public By datePickerSelectActiveDay = By.xpath("//*[@class='active day']");
-	
+		
 	public By fieldDate = By.name("my-date");
+	public By fieldDisabled = By.name("my-disabled");
 	public By fieldId = By.id("my-text-id");
 	public By fieldPassword = By.name("my-password");
+	public By fieldReadyOnly = By.name("my-readonly");
 	public By fieldSelect = By.name("my-select");
 	public By fieldTextarea = By.name("my-textarea");
 	
