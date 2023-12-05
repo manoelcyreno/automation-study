@@ -17,7 +17,7 @@ import locators.LocatorWebformTarget;
 import utils.CommonMethods;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SeleniumWebform {
+public class SeleniumWebformTest {
 
 	private static WebDriver driver = null;
 
