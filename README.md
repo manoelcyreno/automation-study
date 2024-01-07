@@ -8,3 +8,9 @@
   - Maven
   - Eclipse IDE
 - Is a basic automation about test a web-form, provided by the Selenium Web Form Page.
+
+## Automation made in [Cypress](study.cypress/).
+- Project created with
+  - Cypress
+  - VS Code
+- Is a basic automation about test a web-form, provided by the Selenium Web Form Page.
