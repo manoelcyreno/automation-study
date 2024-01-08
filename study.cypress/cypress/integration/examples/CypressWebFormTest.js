@@ -8,11 +8,22 @@ describe('Cypress Web Form Test Suite', function()
                 cy.get('textarea[name="my-textarea"]').type("Testing a text area field");
 
                 cy.get('select').select('Two');
-                //cy.click('//*[contains(text(), 'Two')]');
 
-                cy.get('#my-check-1').click();
-                cy.get('#my-check-2').click();
-                cy.get('#my-radio-2').click();
+                /*
+                cy.get('input[name="my-datalist"]').type("sea");
+                cy.wait(1000);
+                cy.get('#my-options').invoke('show').each(($datalistElement1, index, $list) => {
+                    if($datalistElement1.text()==="Seatle")
+                        {
+                            cy.wrap($datalistElement1).invoke('show').click()
+                        }
+                 
+                    })
+                 */
+
+                cy.get('#my-check-1').uncheck();
+                cy.get('#my-check-2').check();
+                cy.get('#my-radio-2').check();
 
                 cy.get('input[name="my-date"]').type("08/21/1988");
 
