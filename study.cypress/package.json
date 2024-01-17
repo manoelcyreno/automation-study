@@ -10,6 +10,6 @@
   "author": "Manoel Cyreno",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.6.2"
+    "cypress": "^13.6.3"
   }
 }
