@@ -59,7 +59,7 @@ describe('Cypress Web Form Test Suite', function()
 
         it('Validate If Web Form Page Is Accessible With Success', function()
             {
-                var expectedMessage = "Web form"
+                let expectedMessage = "Web form"
 
                 cy.visit(this.data.url)
                 cy.title().should('eq', expectedMessage)
