@@ -14,3 +14,9 @@
   - Cypress
   - VS Code
 - Is a basic automation about test a web-form, provided by the Selenium Web Form Page.
+
+## Automation made in [Playwright](study.playwright/).
+- Project created with
+  - Playwright
+  - VS Code
+- Is a basic automation about test a web-form, provided by the Selenium Web Form Page.
