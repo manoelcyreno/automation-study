@@ -1,3 +1,6 @@
+import HomePageLocators from "../pageObject/HomePageLocators";
+import SuccessPageLocators from "../pageObject/SuccessPageLocators";
+
 describe('Cypress Web Form Test Suite', function()
     {
 
@@ -10,48 +13,56 @@ describe('Cypress Web Form Test Suite', function()
 
         it('Submit Web Form Page With Success', function()
             {
-                cy.visit(this.data.url);
-                cy.get('#my-text-id').type(this.data.smallText);
-                cy.get('input[name="my-password"]').type("passwordField");
-                cy.get('textarea[name="my-textarea"]').type(this.data.bigText);
 
-                cy.get('select').select('Two');
+                const hpl = new HomePageLocators()
+                const spl = new SuccessPageLocators()
 
-                cy.get('#my-check-1').uncheck();
-                cy.get('#my-check-2').check();
-                cy.get('#my-radio-2').check();
+                cy.visit(this.data.url)
+                hpl.getFieldID().type(this.data.smallText)
+                hpl.getFieldPassword().type("passwordField")
+                hpl.getFieldTextarea().type(this.data.bigText)
 
-                cy.get('input[name="my-date"]').type("08/21/1988");
+                hpl.getSelectElement().select('Two')
 
-                cy.get('button').click();
+                hpl.getCheckbox1().uncheck()
+                hpl.getCheckbox2().check()
+                hpl.getRadioButton2().check()
 
-                var expectedMessage = "Received!";
-                cy.get("#message").should('have.text', expectedMessage);
+                hpl.getFieldDate().type("08/21/1988")
+
+                hpl.getSubmitButton().click()
+
+                var expectedMessage = "Received!"
+                spl.getMessage().should('have.text', expectedMessage)
             }
         )
 
         it('Validate If Disable Input Is Disabled', function()
             {
-                cy.visit(this.data.url);
+                const hpl = new HomePageLocators()
 
-                cy.get('input[name="my-disabled"]').should('be.disabled');
+                cy.visit(this.data.url)
+
+                hpl.getDisabledElement().should('be.disabled')
             } 
         )
 
         it('Validate If Readonly Input Can Not Be Editable', function()
             {
-                cy.visit(this.data.url);
+                const hpl = new HomePageLocators()
 
-                cy.get('input[name="my-readonly"]').should('have.attr', 'readonly');
+                cy.visit(this.data.url)
+
+                hpl.getReadOnlyElement().should('have.attr', 'readonly')
             } 
         )
 
         it('Validate If Web Form Page Is Accessible With Success', function()
             {
-                var expectedMessage = "Web form";
+                var expectedMessage = "Web form"
 
-                cy.visit(this.data.url);
-                cy.title().should('eq', expectedMessage);
+                cy.visit(this.data.url)
+                cy.title().should('eq', expectedMessage)
             } 
         )
     }
