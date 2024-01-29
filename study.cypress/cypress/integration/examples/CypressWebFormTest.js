@@ -1,3 +1,5 @@
+require('cypress-xpath');
+
 import HomePageLocators from "../pageObject/HomePageLocators";
 import SuccessPageLocators from "../pageObject/SuccessPageLocators";
 
@@ -63,6 +65,17 @@ describe('Cypress Web Form Test Suite', function()
 
                 cy.visit(this.data.url)
                 cy.title().should('eq', expectedMessage)
+            } 
+        )
+        
+        it('Validate If Web Form Page Is Accessible With Success', function()
+            {
+                let expectedMessage = "which were introduced in the 1930s"
+
+                cy.visit("http://www.google.com")
+                cy.get('textarea[name="q"]').type('automation').type('Cypress.io{enter}')
+                cy.xpath("//*[contains(@href, 'wikipedia.org')]/*[text()='Automation']").click()
+                cy.get("#mw-content-text").should('have.text', expectedMessage)
             } 
         )
     }

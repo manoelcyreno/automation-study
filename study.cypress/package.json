@@ -10,6 +10,7 @@
   "author": "Manoel Cyreno",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.6.3"
+    "cypress": "^13.6.3",
+    "cypress-xpath": "^2.0.1"
   }
 }
