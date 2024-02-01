@@ -1,4 +1,4 @@
-class HomePageLocators {
+exports.HomePageLocators = class HomePageLocators {
 
     getCheckbox1() {
         return '#my-check-1';
@@ -44,5 +44,3 @@ class HomePageLocators {
         return 'button';
     }
 }
-
-export default HomePageLocators;

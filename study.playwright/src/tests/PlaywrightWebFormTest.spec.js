@@ -1,6 +1,9 @@
-import { test, expect } from '@playwright/test';
-import HomePageLocators from '../locators/HomePageLocators';
+// @ts-nocheck
+const { test, expect } = require('@playwright/test');
+const { HomePageLocators } = require('../locators/HomePageLocators');
 import SuccessPageLocators from '../locators/SuccessPageLocators';
+const { HomePage } = require('../pageObject/home.page');
+
 
 test.describe('Playwright Web Form Test Suite', () => {
 
@@ -15,9 +18,15 @@ test.describe('Playwright Web Form Test Suite', () => {
   });
 
   test('Submit Web Form Page With Success', async ({ page }) => {
+    const homePage = new HomePage(page);
    
+    /*
     await page.fill(hpl.getFieldID(),'small text');
     await page.fill(hpl.getFieldPassword(), "passwordField");
+    */
+
+    await homePage.fillMandatoryFields('id', 'password');
+
     await page.fill(hpl.getFieldTextarea(), 'very big big big text');
 
     await page.selectOption(hpl.getSelectElement(), 'Two');
