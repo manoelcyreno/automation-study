@@ -14,7 +14,7 @@ test.describe('Playwright Web Form Test Suite', () => {
     hpl = new HomePageLocators();
     spl = new SuccessPageLocators();
 
-    await page.goto('https://www.selenium.dev/selenium/web/web-form.html');
+    await page.goto(process.env.WEB_URL);
   });
 
   test('Submit Web Form Page With Success', async ({ page }) => {

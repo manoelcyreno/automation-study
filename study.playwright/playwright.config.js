@@ -20,6 +20,7 @@ module.exports = defineConfig({
     ['line'], 
     ['experimental-allure-playwright']
   ],
+  globalSetup: './src/utils/globalSetup.js',
   testDir: './src/tests',
   /* Run tests in files in parallel */
   fullyParallel: true,

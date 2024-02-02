@@ -13,9 +13,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.41.0",
+    "@playwright/test": "^1.41.2",
     "@types/node": "^20.11.5",
     "allure-commandline": "^2.27.0",
     "experimental-allure-playwright": "^0.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1"
   }
 }
