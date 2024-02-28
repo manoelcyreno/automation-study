@@ -1,68 +1,59 @@
 // @ts-nocheck
 const { test, expect } = require('@playwright/test');
 const { HomePageLocators } = require('../locators/HomePageLocators');
-import SuccessPageLocators from '../locators/SuccessPageLocators';
-const { HomePage } = require('../pageObject/home.page');
-
+const { SuccessPageLocators } = require('../locators/SuccessPageLocators');
+const { HomePage } = require('../pages/HomePage');
 
 test.describe('Playwright Web Form Test Suite', () => {
-
-  let hpl;
-  let spl;
   
   test.beforeEach(async ({ page }) => {
-    hpl = new HomePageLocators();
-    spl = new SuccessPageLocators();
-
     await page.goto(process.env.WEB_URL);
   });
 
   test('Submit Web Form Page With Success', async ({ page }) => {
+    const homePageLocator = new HomePageLocators();
+    const successPageLocator = new SuccessPageLocators();  
     const homePage = new HomePage(page);
-   
-    /*
-    await page.fill(hpl.getFieldID(),'small text');
-    await page.fill(hpl.getFieldPassword(), "passwordField");
-    */
 
-    await homePage.fillMandatoryFields('id', 'password');
+    await homePage.fillId('id')
+    await homePage.fillPassword('password');
+    await homePage.fillTextarea('very big big big big big big big big big big big big big big big big big big text');
+    await homePage.fillDate('08/21/1988');
 
-    await page.fill(hpl.getFieldTextarea(), 'very big big big text');
+    await page.selectOption(homePageLocator.getSelectElement(), 'Two');
 
-    await page.selectOption(hpl.getSelectElement(), 'Two');
+    await homePage.uncheck(homePageLocator.getCheckbox1());
+    await homePage.check(homePageLocator.getCheckbox1());
+    await homePage.check(homePageLocator.getRadioButton2());
 
-    await page.uncheck(hpl.getCheckbox1());
-    await page.check(hpl.getCheckbox2());
-    await page.check(hpl.getRadioButton2());
+    await homePage.clickSubmit();
 
-    await page.fill(hpl.getFieldDate(), "08/21/1988");
+    const expectedMessage = "Web form - target page";
+    const pageTitle = await page.title();
 
-    await page.click(hpl.getSubmitButton());
-
-    const expectedMessage = "Received!";
-
-    const messageElement = await page.waitForSelector(spl.getMessage());
-    const messageText = await page.evaluate(element => element.textContent, messageElement);
-    
-    await expect(messageText.trim()).toBe(expectedMessage);
+    expect(pageTitle).toBe(expectedMessage);
   });
 
   test('Validate If Disable Input Is Disabled', async ({ page }) => {
-    const isDisabledAttribute = await page.locator(hpl.getDisabledElement()).getAttribute('disabled') !== null;
+    const homePageLocator = new HomePageLocators();
 
-    await expect(isDisabledAttribute).toBeTruthy();
+    const isDisabledAttribute = await page.locator(homePageLocator.getDisabledElement()).getAttribute('disabled') !== null;
+
+    expect(isDisabledAttribute).toBeTruthy();
   });
 
   test('Validate If Readonly Input Can Not Be Editable', async ({ page }) => {
-    const readOnlyAttribute = await page.locator(hpl.getReadOnlyElement()).getAttribute('readonly') !== null;
+    const homePageLocator = new HomePageLocators();
+    
+    const readOnlyAttribute = await page.locator(homePageLocator.getReadOnlyElement()).getAttribute('readonly') !== null;
 
-    await expect(readOnlyAttribute).toBeTruthy();});
+    expect(readOnlyAttribute).toBeTruthy();});
 
   test('Validate If Web Form Page Is Accessible With Success', async ({ page }) => {
     const expectedMessage = "Web form";
     const pageTitle = await page.title();
 
-    await expect(pageTitle).toBe(expectedMessage);
+    expect(pageTitle).toBe(expectedMessage);
   });
 });
 

@@ -8,4 +8,4 @@ async function globalSetup(config) {
     });
   }
   
-  module.exports = globalSetup;
+module.exports = globalSetup;
