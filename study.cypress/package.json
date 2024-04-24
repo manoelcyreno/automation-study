@@ -6,6 +6,7 @@
   "scripts": {
     "test": "cypress run",
     "test:ui": "npx cypress open",
+    "test:parallel": "./run_test.sh",
     "test:smoke": "CYPRESS_INCLUDE_TAGS=critical npx cypress run"
   },
   "keywords": [],

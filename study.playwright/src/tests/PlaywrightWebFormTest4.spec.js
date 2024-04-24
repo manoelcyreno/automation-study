@@ -4,13 +4,13 @@ const { HomePageLocators } = require('../locators/HomePageLocators');
 const { SuccessPageLocators } = require('../locators/SuccessPageLocators');
 const { HomePage } = require('../pages/HomePage');
 
-test.describe('Playwright Web Form Test Suite2', () => {
+test.describe('Playwright Web Form Test Suite4', () => {
   
   test.beforeEach(async ({ page }) => {
     await page.goto(process.env.WEB_URL);
   });
 
-  test('Submit Web Form Page With Success2', {tag: "@critical"}, async ({ page }) => {
+  test('Submit Web Form Page With Success4', {tag: "@critical"}, async ({ page }) => {
     const homePageLocator = new HomePageLocators();
     const successPageLocator = new SuccessPageLocators();  
     const homePage = new HomePage(page);
@@ -34,7 +34,7 @@ test.describe('Playwright Web Form Test Suite2', () => {
     expect(pageTitle).toBe(expectedMessage);
   });
 
-  test('Validate If Disable Input Is Disabled2', {tag: "@medium"}, async ({ page }) => {
+  test('Validate If Disable Input Is Disabled4', {tag: "@medium"}, async ({ page }) => {
     const homePageLocator = new HomePageLocators();
 
     const isDisabledAttribute = await page.locator(homePageLocator.getDisabledElement()).getAttribute('disabled') !== null;
@@ -42,7 +42,7 @@ test.describe('Playwright Web Form Test Suite2', () => {
     expect(isDisabledAttribute).toBeTruthy();
   });
 
-  test('Validate If Readonly Input Can Not Be Editable2', {tag: "@high"}, async ({ page }) => {
+  test('Validate If Readonly Input Can Not Be Editable4', {tag: "@high"}, async ({ page }) => {
     const homePageLocator = new HomePageLocators();
     
     const readOnlyAttribute = await page.locator(homePageLocator.getReadOnlyElement()).getAttribute('readonly') !== null;
@@ -50,7 +50,7 @@ test.describe('Playwright Web Form Test Suite2', () => {
     expect(readOnlyAttribute).toBeTruthy();
   });
 
-  test('Validate If Web Form Page Is Accessible With Success2', {tag: "@medium"}, async ({ page }) => {
+  test('Validate If Web Form Page Is Accessible With Success4', {tag: "@medium"}, async ({ page }) => {
     const expectedMessage = "Web form";
     const pageTitle = await page.title();
 

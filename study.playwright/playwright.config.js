@@ -24,7 +24,7 @@ module.exports = defineConfig({
   globalSetup: './src/utils/globalSetup.js',
   testDir: './src/tests',
   fullyParallel: true,
-  workers: 4,
+  workers: 2,
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
