@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run",
-    "test:ui": "npx cypress open"
+    "test:ui": "npx cypress open",
+    "test:smoke": "CYPRESS_INCLUDE_TAGS=critical npx cypress run"
   },
   "keywords": [],
   "author": "Manoel Cyreno",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^13.6.3",
-    "cypress-xpath": "^2.0.1"
+    "cypress-tags": "^1.1.2",
+    "cypress-xpath": "^2.0.1",
+    "typescript": "^5.4.5"
   }
 }

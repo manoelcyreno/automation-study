@@ -25,3 +25,4 @@ replay_pid*
 /.metadata/
 */reports/*
 */node_modules/*
+*/package-lock.json

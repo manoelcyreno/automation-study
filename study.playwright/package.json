@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "testUI": "npx playwright test --ui",
+    "test:ui": "npx playwright test --ui",
+    "test:smoke": "npx playwright test --grep @critical",
     "report:generate": "npx allure generate ./allure-results --clean",
     "report:open": "npx allure open ./allure-report",
     "sonar:configure": "./configureSonar.sh",
@@ -19,7 +20,7 @@
     "@types/node": "^20.11.5",
     "allure-commandline": "^2.27.0",
     "experimental-allure-playwright": "^0.0.3",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "sonarqube-scanner": "^3.3.0"
   },
   "dependencies": {

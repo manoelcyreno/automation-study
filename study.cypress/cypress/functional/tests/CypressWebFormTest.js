@@ -13,7 +13,7 @@ describe('Cypress Web Form Test Suite', function()
             })
         })
 
-        it('Submit Web Form Page With Success', function()
+        it(["critical"], 'Submit Web Form Page With Success', function()
             {
 
                 const hpl = new HomePageLocators()
@@ -39,7 +39,7 @@ describe('Cypress Web Form Test Suite', function()
             }
         )
 
-        it('Validate If Disable Input Is Disabled', function()
+        it(["medium"], 'Validate If Disable Input Is Disabled', function()
             {
                 const hpl = new HomePageLocators()
 
@@ -49,7 +49,7 @@ describe('Cypress Web Form Test Suite', function()
             } 
         )
 
-        it('Validate If Readonly Input Can Not Be Editable', function()
+        it(["high"], 'Validate If Readonly Input Can Not Be Editable', function()
             {
                 const hpl = new HomePageLocators()
 
@@ -59,7 +59,7 @@ describe('Cypress Web Form Test Suite', function()
             } 
         )
 
-        it('Validate If Web Form Page Is Accessible With Success', function()
+        it(["medium"], 'Validate If Web Form Page Is Accessible With Success', function()
             {
                 let expectedMessage = "Web form"
 
