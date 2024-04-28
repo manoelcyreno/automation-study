@@ -59,9 +59,10 @@ describe('Cypress Web Form Test Suite4', function()
             } 
         )
 
+        //this test needs to failure, to check the fail results on the test report.
         it(["medium"], 'Validate If Web Form Page Is Accessible With Success4', function()
             {
-                let expectedMessage = "Web form"
+                let expectedMessage = "Web form2"
 
                 cy.visit(this.data.url)
                 cy.title().should('eq', expectedMessage)
