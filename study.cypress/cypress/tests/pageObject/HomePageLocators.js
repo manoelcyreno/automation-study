@@ -46,4 +46,4 @@ class HomePageLocators {
 
 }
 
-export default HomePageLocators;
+export default HomePageLocators
