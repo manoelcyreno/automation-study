@@ -16,13 +16,13 @@
   "author": "Manoel Cyreno",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.41.2",
-    "@types/node": "^20.11.5",
-    "allure-commandline": "^2.27.0",
-    "experimental-allure-playwright": "^0.0.3",
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.7",
+    "allure-commandline": "^2.30.0",
+    "allure-playwright": "^3.0.5",
+    "dotenv": "^16.4.5",
     "gulp": "^5.0.0",
-    "sonarqube-scanner": "^3.3.0",
-    "dotenv": "^16.4.1",
-    "nyc": "^15.1.0"
+    "nyc": "^17.1.0",
+    "sonarqube-scanner": "^4.2.5"
   }
 }

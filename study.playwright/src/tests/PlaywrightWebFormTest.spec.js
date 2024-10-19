@@ -16,7 +16,9 @@ test.describe('Playwright Web Form Test Suite', () => {
     formsData = utils.readJsonFile('src/test-data/forms.input.json');
   });
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page }, testInfo) => {
+    utils.addAllureLabelsFromTags(testInfo.tags);
+
     homePage = new HomePage(page);
     successPage = new SuccessPage(page);
 
