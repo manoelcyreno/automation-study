@@ -6,4 +6,4 @@ class SuccessPageLocators {
 
 }
 
-export default SuccessPageLocators;
+export default SuccessPageLocators

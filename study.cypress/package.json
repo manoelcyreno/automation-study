@@ -4,17 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run",
-    "test:ui": "npx cypress open",
-    "test:parallel": "./run_test.sh",
-    "test:smoke": "CYPRESS_INCLUDE_TAGS=critical npx cypress run"
+    "test": "npx cypress run --config-file cypress.test.config.js",
+    "test:ui": "npx cypress open --config-file cypress.test.config.js",
+    "test:smoke": "CYPRESS_INCLUDE_TAGS=critical npx cypress run --config-file cypress.test.config.js",
+    "report": "allure generate --clean && allure open"
   },
   "keywords": [],
   "author": "Manoel Cyreno",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/cypress": "10.0.1",
+    "allure-commandline": "^2.30.0",
+    "allure-cypress": "^3.0.5",
     "cypress": "^13.6.3",
-    "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-tags": "^1.1.2",
     "cypress-xpath": "^2.0.1",
     "typescript": "^5.4.5"

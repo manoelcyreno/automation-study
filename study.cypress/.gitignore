@@ -25,5 +25,7 @@ replay_pid*
 /.metadata/
 */reports/*
 */screenshots/*
-*/node_modules/*
+/node_modules/
 */package-lock.json
+/allure-report/
+/allure-results/
