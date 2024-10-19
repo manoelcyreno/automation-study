@@ -1,12 +1,13 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const allure = require('allure-playwright');
 
 module.exports = defineConfig({
   // Reporter configuration
   reporter: [
     ['list'], 
     ['junit', {  outputFile: 'junitTestResult.xml' }],
-    ['experimental-allure-playwright']
+    ['allure-playwright', { outputFolder: 'allure-results', usePreviousAttempt: false }],
   ],
 
   // Test config files
@@ -19,7 +20,7 @@ module.exports = defineConfig({
   },
 
   // retries in case of failure
-  retries: 1,
+  retries: 0,
 
   // timeout logic
   timeout: 60000,
