@@ -13,6 +13,7 @@
 - Project created with
   - Cypress
   - VS Code
+  - Allure Report
 - Is a basic automation for testing a web-form, provided by the Selenium Web Form Page.
 
 ## Automation made in [Playwright](study.playwright/).
