@@ -1,5 +1,8 @@
-exports.SuccessPageLocators = class SuccessPageLocators {
+class SuccessPageLocators {
+    
     getMessage() {
         return '#message';
     }
 }
+
+module.exports = SuccessPageLocators;
