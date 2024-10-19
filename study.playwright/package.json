@@ -21,9 +21,7 @@
     "allure-commandline": "^2.27.0",
     "experimental-allure-playwright": "^0.0.3",
     "gulp": "^5.0.0",
-    "sonarqube-scanner": "^3.3.0"
-  },
-  "dependencies": {
+    "sonarqube-scanner": "^3.3.0",
     "dotenv": "^16.4.1",
     "nyc": "^15.1.0"
   }
